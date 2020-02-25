@@ -91,6 +91,38 @@ router.post('/signin', function(req, res) {
         };
 });
 
+router.post('/movies', function(req, res) {
+
+    //HTTP Method: POST should return {“status”: 200, message: “movie
+    // saved”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
+    res.status(200).send({msg : "movie saved", headers: req.headers, query : req.query});
+
+    /*
+    var user = db.findOne(req.body.username);
+
+    if (!user) {
+        res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
+    }
+    else {
+        // check if password matches
+        if (req.body.password == user.password)  {
+            var userToken = { id : user.id, username: user.username };
+            var token = jwt.sign(userToken, process.env.SECRET_KEY);
+            res.json({success: true, token: 'JWT ' + token});
+        }
+        else {
+            res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
+        }
+    };
+
+
+     */
+});
+
+
+
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
 
