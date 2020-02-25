@@ -57,6 +57,19 @@ router.route('/postjwt')
         }
     );
 
+router.route('/get')
+    .post(authJwtController.isAuthenticated, function (req, res) {
+            console.log(req.body);
+            res = res.status(200);
+            if (req.get('Content-Type')) {
+                console.log("Content-Type: " + req.get('Content-Type'));
+                res = res.type(req.get('Content-Type'));
+            }
+            res.send(req.body);
+        }
+    );
+
+
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
         res.json({success: false, msg: 'Please pass username and password.'});
@@ -97,28 +110,18 @@ router.post('/movies', function(req, res) {
     // saved”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
+    res.status(200).send({msg : "get movies", headers: req.headers, query : req.query, env : req.body.env});
+
+});
+
+router.get('/movies', function(req, res) {
+
+    //HTTP Method: POST should return {“status”: 200, message: “movie
+    // saved”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
     res.status(200).send({msg : "movie saved", headers: req.headers, query : req.query, env : req.body.env});
 
-    /*
-    var user = db.findOne(req.body.username);
-
-    if (!user) {
-        res.status(401).send({success: false, msg: 'Authentication failed. User not found.'});
-    }
-    else {
-        // check if password matches
-        if (req.body.password == user.password)  {
-            var userToken = { id : user.id, username: user.username };
-            var token = jwt.sign(userToken, process.env.SECRET_KEY);
-            res.json({success: true, token: 'JWT ' + token});
-        }
-        else {
-            res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
-        }
-    };
-
-
-     */
 });
 
 
