@@ -174,7 +174,27 @@ router.all('/movies', function(req, res) {
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "it doesn’t support the HTTP method."});
+    res.status(200).send({msg : "Movies doesn’t support the HTTP method."});
+
+});
+
+router.all('/signin', function(req, res) {
+
+    //HTTP Method: Put should return {“status”: 200, message: “movie
+    // updated”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
+    res.status(200).send({msg : "Sign in doesn’t support the HTTP method."});
+
+});
+
+router.all('/signup', function(req, res) {
+
+    //HTTP Method: Put should return {“status”: 200, message: “movie
+    // updated”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
+    res.status(200).send({msg : "Sign up doesn’t support the HTTP method."});
 
 });
 
