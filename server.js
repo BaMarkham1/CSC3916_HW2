@@ -110,7 +110,7 @@ router.post('/movies', function(req, res) {
     // saved”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "get movies", headers: req.headers, query : req.query, env : req.body.env});
+    res.status(200).send({msg : "movie saved", headers: req.headers, query : req.query, env : req.body.env});
 
 });
 
@@ -120,7 +120,7 @@ router.get('/movies', function(req, res) {
     // saved”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "movie saved", headers: req.headers, query : req.query, env : req.body.env});
+    res.status(200).send({msg : "GET movies", headers: req.headers, query : req.query, env : req.body.env});
 
 });
 
