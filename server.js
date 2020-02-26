@@ -168,6 +168,17 @@ router.delete('/movies', function(req, res) {
 
 });
 
+router.all('/movies', function(req, res) {
+
+    //HTTP Method: Put should return {“status”: 200, message: “movie
+    // updated”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
+    res.status(200).send({msg : "it doesn’t support the HTTP method."});
+
+});
+
+
 
 
 app.use('/', router);
