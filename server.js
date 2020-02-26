@@ -69,6 +69,18 @@ router.route('/get')
         }
     );
 
+router.route('/delete')
+    .post(authJwtController.isAuthenticated, function (req, res) {
+            console.log(req.body);
+            res = res.status(200);
+            if (req.get('Content-Type')) {
+                console.log("Content-Type: " + req.get('Content-Type'));
+                res = res.type(req.get('Content-Type'));
+            }
+            res.send(req.body);
+        }
+    );
+
 router.route('/put')
     .post(authJwtController.isAuthenticated, function (req, res) {
             console.log(req.body);
@@ -143,6 +155,16 @@ router.put('/movies', function(req, res) {
     // from request, env: your unique key }
 
     res.status(200).send({msg : "movie updated", headers: req.headers, query : req.query, env : req.body.env});
+
+});
+
+router.delete('/movies', function(req, res) {
+
+    //HTTP Method: Put should return {“status”: 200, message: “movie
+    // updated”, headers: headers: header from request, query: query string
+    // from request, env: your unique key }
+
+    res.status(200).send({msg : "movie deleted", headers: req.headers, query : req.query, env : req.body.env});
 
 });
 
