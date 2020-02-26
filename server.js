@@ -154,13 +154,12 @@ router.put('/movies', function(req, res) {
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    var userToken = { id : user.id, username: user.username };
-    var token = jwt.sign(userToken, process.env.SECRET_KEY);
-    if (req.body.token === token) {
+
+    if (authJwtController.isAuthenticated) {
         res.status(200).send({msg : "movie updated", headers: req.headers, query : req.query, env : req.body.env});
     }
     else {
-        res.status(401).send({success: false, msg: 'Authentication failed. Wrong jwt token.'});
+        res.status(401).send({success: false, msg: 'Authentication failed. Wrong jwt token: ' + req.headers["Authorization"]});
     }
 
 
