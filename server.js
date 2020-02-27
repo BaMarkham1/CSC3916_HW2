@@ -177,7 +177,7 @@ router.delete('/movies', authController.isAuthenticated, function(req, res) {
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "movie deleted", headers: req.headers, query : req.query, env : req.body.env});
+    res.status(400).send({msg : "movie deleted", headers: req.headers, query : req.query, env : req.body.env});
 
 });
 
@@ -187,7 +187,7 @@ router.all('/movies', function(req, res) {
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "Movies doesn’t support the HTTP method."});
+    res.status(400).send({msg : "Movies doesn’t support the HTTP method."});
 
 });
 
@@ -197,7 +197,7 @@ router.all('/signin', function(req, res) {
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
 
-    res.status(200).send({msg : "Sign in doesn’t support the HTTP method."});
+    res.status(400).send({msg : "Sign in doesn’t support the HTTP method."});
 
 });
 
