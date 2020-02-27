@@ -32,6 +32,10 @@ function getJSONObject(req) {
 
     return json;
 }
+router.route('')
+    .post(function (req, res) {
+        res.status(400).send({msg : "Sign up doesn’t support the HTTP method."});
+    });
 
 router.route('/post')
     .post(authController.isAuthenticated, function (req, res) {
