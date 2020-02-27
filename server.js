@@ -33,8 +33,8 @@ function getJSONObject(req) {
     return json;
 }
 router.route('')
-    .post(function (req, res) {
-        res.status(400).send({msg : "Sign up doesn’t support the HTTP method."});
+    .all(function (req, res) {
+        res.status(400).send({msg : "Requests made to the base url should be rejected"});
     });
 
 router.route('/post')
