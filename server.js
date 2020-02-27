@@ -6,6 +6,7 @@ var authController = require('./auth');
 var authJwtController = require('./auth_jwt');
 db = require('./db')(); //global hack
 var jwt = require('jsonwebtoken');
+//var cors = require('cors')
 
 var app = express();
 app.use(bodyParser.json());
@@ -170,7 +171,7 @@ router.put('/movies', authJwtController.isAuthenticated, function(req, res) {
 
 });
 
-router.delete('/movies', function(req, res) {
+router.delete('/movies', authController.isAuthenticated, function(req, res) {
 
     //HTTP Method: Put should return {“status”: 200, message: “movie
     // updated”, headers: headers: header from request, query: query string
