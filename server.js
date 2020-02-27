@@ -152,7 +152,7 @@ router.get('/movies', function(req, res) {
 router.put('/movies', authJwtController.isAuthenticated, function(req, res) {
 //.post(authJwtController.isAuthenticated, function (req, res) {
 
-    res.status(200).send({msg : "GET movies", headers: req.headers, query : req.query, env : req.body.env});
+    res.status(200).send({msg : "movie updated", headers: req.headers, query : req.query, env : req.body.env});
     //HTTP Method: Put should return {“status”: 200, message: “movie
     // updated”, headers: headers: header from request, query: query string
     // from request, env: your unique key }
